@@ -31,6 +31,7 @@ namespace API.Controllers
 
     }
 
+     [Authorize(Roles ="Admin")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
     {
@@ -44,6 +45,8 @@ namespace API.Controllers
       Response.AddPaginationHeader(users.CurrentPage, users.PageSize,users.TotalCount, users.TotalPages);
       return Ok(users);
     }
+
+     [Authorize(Roles ="Member")]
     [HttpGet("{username}", Name = "GetUser")]
     public async Task<ActionResult<MemberDto>> GetUser(string username)
     {
