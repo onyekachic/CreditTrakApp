@@ -13,9 +13,11 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./member-edit.component.css'],
 })
 export class MemberEditComponent implements OnInit {
+
   @ViewChild('editForm') editForm: NgForm;
   member: Member;
   user: User;
+
   @HostListener('window:beforeunload', ['$event']) unloadNotification(
     $event: any
   ) {
@@ -23,6 +25,8 @@ export class MemberEditComponent implements OnInit {
       $event.returnValue = true;
     }
   }
+
+
   constructor(
     private accountService: AccountService,
     private memberService: MembersService,
